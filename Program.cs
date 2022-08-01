@@ -4,6 +4,10 @@
 while (int i = 0; i < IntegerArray.Length)
 Console.WriteLine("Hello, World!");
 */
+using Collection_LINQ_Fundamentals_DIO.Helper;
+
+OperacoesArray Operacao = new OperacoesArray();
+// /*
 int ArrayLength;
 Console.WriteLine("Olá, Bem Vindo ao Projeto Array de Tamanho variável \n");
 
@@ -88,3 +92,129 @@ for (int i = 0; i < Matriz5x5.GetLength(0); i++)
         Console.WriteLine(Matriz5x5[i, j]);
     }
 }
+// */
+int[] ArrayNum = new int[7] { 49, 7, 40, 4, 12, 16, 23};
+
+Console.WriteLine("Imprimindo o Array Original Desordenado: \n");
+Console.WriteLine("------------------------------------ \n");
+
+ Operacao.ImprimirArray(ArrayNum);
+
+Console.WriteLine("Ordenando Array: \n");
+Console.WriteLine("------------------------------------ \n");
+
+Operacao.DoBubbleSort(ref ArrayNum);
+
+Operacao.Ordernar(ref ArrayNum);
+
+Console.WriteLine("Imprimindo o Array Ordenado: \n");
+Console.WriteLine("------------------------------------ \n");
+
+Operacao.ImprimirArray(ArrayNum);
+
+// /*
+Console.WriteLine("Copiando um Array: \n");
+Console.WriteLine("------------------------------------ \n");
+
+int[] CopyArray = new int[10];
+
+Console.WriteLine("Array Before the Copy Process: \n");
+Console.WriteLine("------------------------------------ \n");
+Operacao.ImprimirArray(CopyArray);
+
+Operacao.ToCopyArray(ref ArrayNum, ref CopyArray);
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Array After the Copy Process: \n");
+Operacao.ImprimirArray(CopyArray);
+// */
+
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Verifying Existence of value in an Array: \n");
+
+
+Console.WriteLine("Please enter the value to be searched for in the Array: \n");
+int ValueToSearch = int.Parse(Console.ReadLine());
+bool Exists = Operacao.DoesItExist(ArrayNum, ValueToSearch);
+
+if (Exists)
+{
+    Console.WriteLine("Value [{0}] Found", ValueToSearch);
+}
+else 
+{
+    Console.WriteLine("Value [{0}] Not Found", ValueToSearch);
+}
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Verifying all values in an Array for a specific condition: \n");
+
+Console.WriteLine("Please enter the conditional value to be searched in the Array: \n");
+int ValueToSearch2 = int.Parse(Console.ReadLine());
+bool AllGreaterThan = Operacao.AllGreaterThan(ArrayNum, ValueToSearch2);
+
+if (AllGreaterThan)
+{
+    Console.WriteLine("All Values are GREATER than [{0}]", ValueToSearch2);
+}
+else
+{
+    Console.WriteLine("There is values that are NOT GREATER than [{0}]", ValueToSearch2);
+}
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Searching for Value in array that matches with user specified value: \n");
+int ValueToSearch3 = int.Parse(Console.ReadLine());
+int ValueFound = Operacao.GetValue(ArrayNum, ValueToSearch3);
+
+if (ValueFound > 0)
+{
+    Console.WriteLine("Value [{0}] Found", ValueToSearch3);
+}
+else
+{
+    Console.WriteLine("Value [{0}] Not Found", ValueToSearch3);
+}
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Searching for Index of a value in the array that matches with user specified value: \n");
+int ValueToSearch4 = int.Parse(Console.ReadLine());
+int Index = Operacao.GetIndexOf(ArrayNum, ValueToSearch4);
+if (ValueFound > -1)
+{
+    Console.WriteLine($"Index of Value [{ValueToSearch4}] is [{Index}]");
+}
+else
+{
+    Console.WriteLine("Value Not Found in the Array");
+}
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Searching for Index of a value in the array that matches with specific condition (Predicate): \n");
+int ValueToSearch5 = int.Parse(Console.ReadLine());
+int Index2 = Operacao.GetIndexOf(ArrayNum, ValueToSearch4);
+if (ValueFound > -1)
+{
+    Console.WriteLine($"Index of first Value smaller than [{ValueToSearch5}] is [{Index2}]");
+}
+else
+{
+    Console.WriteLine("Value Not Found in the Array");
+}
+
+
+
+string[] StringArray = Operacao.ConvertIntoStringArray(ArrayNum);
+
+Console.WriteLine($"A Capacidade Atual do meu array é : [{ArrayNum.Length}]");
+
+Operacao.ResizeArray(ref ArrayNum, ArrayNum.Length * 3);
+
+Console.WriteLine($"A Capacidade Atual do meu array após redimensionamento é : [{ArrayNum.Length}]");
+
+
+
+
+
+
