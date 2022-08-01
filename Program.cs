@@ -7,6 +7,7 @@ Console.WriteLine("Hello, World!");
 using Collection_LINQ_Fundamentals_DIO.Helper;
 
 OperacoesArray Operacao = new OperacoesArray();
+OperacoesLista OperacaoLista = new OperacoesLista();
 // /*
 int ArrayLength;
 Console.WriteLine("Olá, Bem Vindo ao Projeto Array de Tamanho variável \n");
@@ -92,7 +93,7 @@ for (int i = 0; i < Matriz5x5.GetLength(0); i++)
         Console.WriteLine(Matriz5x5[i, j]);
     }
 }
-// */
+
 int[] ArrayNum = new int[7] { 49, 7, 40, 4, 12, 16, 23};
 
 Console.WriteLine("Imprimindo o Array Original Desordenado: \n");
@@ -112,7 +113,6 @@ Console.WriteLine("------------------------------------ \n");
 
 Operacao.ImprimirArray(ArrayNum);
 
-// /*
 Console.WriteLine("Copiando um Array: \n");
 Console.WriteLine("------------------------------------ \n");
 
@@ -127,8 +127,6 @@ Operacao.ToCopyArray(ref ArrayNum, ref CopyArray);
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Array After the Copy Process: \n");
 Operacao.ImprimirArray(CopyArray);
-// */
-
 
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Verifying Existence of value in an Array: \n");
@@ -140,11 +138,11 @@ bool Exists = Operacao.DoesItExist(ArrayNum, ValueToSearch);
 
 if (Exists)
 {
-    Console.WriteLine("Value [{0}] Found", ValueToSearch);
+    Console.WriteLine("Value [{0}] Exist", ValueToSearch);
 }
 else 
 {
-    Console.WriteLine("Value [{0}] Not Found", ValueToSearch);
+    Console.WriteLine("Value [{0}] Does Not Exist", ValueToSearch);
 }
 
 Console.WriteLine("------------------------------------ \n");
@@ -193,7 +191,7 @@ else
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Searching for Index of a value in the array that matches with specific condition (Predicate): \n");
 int ValueToSearch5 = int.Parse(Console.ReadLine());
-int Index2 = Operacao.GetIndexOf(ArrayNum, ValueToSearch4);
+int Index2 = Operacao.GetIndex(ArrayNum, ValueToSearch5);
 if (ValueFound > -1)
 {
     Console.WriteLine($"Index of first Value smaller than [{ValueToSearch5}] is [{Index2}]");
@@ -212,9 +210,43 @@ Console.WriteLine($"A Capacidade Atual do meu array é : [{ArrayNum.Length}]");
 Operacao.ResizeArray(ref ArrayNum, ArrayNum.Length * 3);
 
 Console.WriteLine($"A Capacidade Atual do meu array após redimensionamento é : [{ArrayNum.Length}]");
+// */
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Exploring Lists from C# Collections Generic \n");
+
+List<string> BrazilStates = new List<string>();
+string[] States = new string[2] { "MT", "CE" };
+
+BrazilStates.Add("MG");
+BrazilStates.Add("SC");
+BrazilStates.Add("SP");
+BrazilStates.Add("BA");
 
 
+Console.WriteLine($"Number of Entries on Brazil States List -> [{BrazilStates.Count}]");
+// /*
+foreach (var item in BrazilStates)
+{
+    Console.WriteLine($"[{item}]");
+}
+// */
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Imprimindo a Lista de Estados Brasileiros");
 
+OperacaoLista.PrintStringList(BrazilStates);
+Console.WriteLine("------------------------------------ \n");
 
+Console.WriteLine("Removendo o Estado da Bahia da Lista");
+BrazilStates.Remove("BA");
 
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Adding the values from State Array to Brazil States List");
 
+BrazilStates.AddRange(States);
+BrazilStates.Insert(2, "RJ");
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Imprimindo a Lista de Estados Brasileiros Atualizada");
+
+OperacaoLista.PrintStringList(BrazilStates);
+Console.WriteLine("------------------------------------ \n");
