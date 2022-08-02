@@ -8,7 +8,7 @@ using Collection_LINQ_Fundamentals_DIO.Helper;
 
 OperacoesArray Operacao = new OperacoesArray();
 OperacoesLista OperacaoLista = new OperacoesLista();
-// /*
+
 int ArrayLength;
 Console.WriteLine("Olá, Bem Vindo ao Projeto Array de Tamanho variável \n");
 
@@ -179,7 +179,7 @@ Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Searching for Index of a value in the array that matches with user specified value: \n");
 int ValueToSearch4 = int.Parse(Console.ReadLine());
 int Index = Operacao.GetIndexOf(ArrayNum, ValueToSearch4);
-if (ValueFound > -1)
+if (Index > -1)
 {
     Console.WriteLine($"Index of Value [{ValueToSearch4}] is [{Index}]");
 }
@@ -192,7 +192,7 @@ Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Searching for Index of a value in the array that matches with specific condition (Predicate): \n");
 int ValueToSearch5 = int.Parse(Console.ReadLine());
 int Index2 = Operacao.GetIndex(ArrayNum, ValueToSearch5);
-if (ValueFound > -1)
+if (Index2 > -1)
 {
     Console.WriteLine($"Index of first Value smaller than [{ValueToSearch5}] is [{Index2}]");
 }
@@ -210,7 +210,7 @@ Console.WriteLine($"A Capacidade Atual do meu array é : [{ArrayNum.Length}]");
 Operacao.ResizeArray(ref ArrayNum, ArrayNum.Length * 3);
 
 Console.WriteLine($"A Capacidade Atual do meu array após redimensionamento é : [{ArrayNum.Length}]");
-// */
+
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Exploring Lists from C# Collections Generic \n");
 
@@ -224,12 +224,14 @@ BrazilStates.Add("BA");
 
 
 Console.WriteLine($"Number of Entries on Brazil States List -> [{BrazilStates.Count}]");
-// /*
+
 foreach (var item in BrazilStates)
 {
     Console.WriteLine($"[{item}]");
 }
-// */
+
+
+// /*
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Imprimindo a Lista de Estados Brasileiros");
 
@@ -250,3 +252,62 @@ Console.WriteLine("Imprimindo a Lista de Estados Brasileiros Atualizada");
 
 OperacaoLista.PrintStringList(BrazilStates);
 Console.WriteLine("------------------------------------ \n");
+
+// */
+
+Console.WriteLine("------------------------------------ \n");
+Console.WriteLine("Doing some Queue & Stack Shenanigans \n");
+
+Queue<string> MyQueue = new Queue<string>();
+
+MyQueue.Enqueue("André Celso");
+MyQueue.Enqueue("Fernanda Dias Lima");
+MyQueue.Enqueue("João Roberto");
+MyQueue.Enqueue("Felipe Martins");
+MyQueue.Enqueue("Marta Rocha");
+
+Console.WriteLine($"People in the current Queue: [{MyQueue.Count()}]\n ");
+
+while (MyQueue.Count() > 0)
+{
+    Console.WriteLine("----------------------------------------------------------------------------- \n");
+    Console.WriteLine($"Calling Mr.(s) [{MyQueue.Peek()}] to come to the counter to be attended \n");
+    string LastPerson = MyQueue.Peek();
+    Console.WriteLine($"Currently Attending Mr.(s) [{MyQueue.Dequeue()}] \n");
+    Console.WriteLine($"Attending of Mr.(s) [{LastPerson}] Completed \n");
+    Console.WriteLine($"Calling Next Person to come to the counter to be attended \n");
+    Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+}
+
+Console.WriteLine($"People in the current Queue: [{MyQueue.Count()}]");
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+Stack<string> GameStack = new Stack<string>();
+
+GameStack.Push("Sonic CD 2011");
+GameStack.Push("Rockman X5");
+GameStack.Push("Sonic & The Fallen Star");
+GameStack.Push("Sonic Triple Trouble");
+
+Console.WriteLine($"Count of Games to be Played [{GameStack.Count()}]");
+
+while (GameStack.Count() > 0)
+{
+    Console.WriteLine("----------------------------------------------------------------------------- \n");
+    Console.WriteLine($"Next Game to be Played on Stream will be [{GameStack.Peek()}] \n");
+    string LastPlayedGame = GameStack.Peek();
+    Console.WriteLine($" Currently Playing: [{GameStack.Pop()}] \n");
+    Console.WriteLine($"Last Played Game: [{LastPlayedGame}] \n");
+    Console.WriteLine("----------------------------------------------------------------------------- \n");
+}
+
+Console.WriteLine($"Count of Games to be Played [{GameStack.Count()}]");
+
+
+
+
+
+
+
