@@ -4,6 +4,7 @@
 while (int i = 0; i < IntegerArray.Length)
 Console.WriteLine("Hello, World!");
 */
+
 using Collection_LINQ_Fundamentals_DIO.Helper;
 
 OperacoesArray Operacao = new OperacoesArray();
@@ -253,7 +254,7 @@ Console.WriteLine("Imprimindo a Lista de Estados Brasileiros Atualizada");
 OperacaoLista.PrintStringList(BrazilStates);
 Console.WriteLine("------------------------------------ \n");
 
-// */
+
 
 Console.WriteLine("------------------------------------ \n");
 Console.WriteLine("Doing some Queue & Stack Shenanigans \n");
@@ -305,8 +306,57 @@ while (GameStack.Count() > 0)
 
 Console.WriteLine($"Count of Games to be Played [{GameStack.Count()}]");
 
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Doing some Dictionary Shenanigans This time \n");
 
+Dictionary<string, string> GameDictionary = new Dictionary<string, string>();
 
+GameDictionary.Add("STT", "Sonic Triple Trouble");
+GameDictionary.Add("IE", "Inazuma Eleven");
+GameDictionary.Add("IE2013", "Inazuma Eleven GO Strikers 2013");
+GameDictionary.Add("S1F", "Sonic 1 Forever");
+GameDictionary.Add("S2A", "Sonic 2 Absolute");
+GameDictionary.Add("S3K", "Sonic 3 & Knuckles");
+GameDictionary.Add("SCD2011", "Sonic CD 2011");
+
+foreach (KeyValuePair<string, string> item in GameDictionary)
+{
+    Console.WriteLine($" Key: [{item.Key}] - Value [{item.Value}] \n");
+}
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+string ValueToSearch7 = "S3K";
+
+Console.WriteLine("Original Value");
+Console.WriteLine($"Value Found in the Dictionary : [{GameDictionary[ValueToSearch7]}] \n");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+GameDictionary[ValueToSearch7] = "Sonic 3 & Knuckles Angel Island Revisited";
+
+Console.WriteLine("Changed Value");
+Console.WriteLine($"Value Found in the Dictionary : [{GameDictionary[ValueToSearch7]}] \n");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+Console.WriteLine("Removing Dictionary Entries");
+
+ValueToSearch7 = "SCD2011";
+
+GameDictionary.Remove(ValueToSearch7);
+
+foreach (KeyValuePair<string, string> item in GameDictionary)
+{
+    Console.WriteLine($" Key: [{item.Key}] - Value [{item.Value}] \n");
+}
+
+if (GameDictionary.TryGetValue("IE2013", out string ValueFound8))
+{
+    Console.WriteLine(ValueFound8);
+}
+else
+{
+    Console.WriteLine($"Game [{ValueToSearch7}] Not Found");
+}
 
 
 
