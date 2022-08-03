@@ -9,6 +9,7 @@ using Collection_LINQ_Fundamentals_DIO.Helper;
 
 OperacoesArray Operacao = new OperacoesArray();
 OperacoesLista OperacaoLista = new OperacoesLista();
+OperacoesLINQ OperacaoLINQ = new OperacoesLINQ();
 
 int ArrayLength;
 Console.WriteLine("Olá, Bem Vindo ao Projeto Array de Tamanho variável \n");
@@ -358,6 +359,82 @@ else
     Console.WriteLine($"Game [{ValueToSearch7}] Not Found");
 }
 
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Doing some LINQ Shenanigans This time \n");
+
+int[] ArrayNum2 = new int[16] {24, 1, 3, 4, 5, 6, 0, 8, 10, 11, 15, 16, 16, 7, 14, 7};
+
+var EvenNumberQuery = 
+        from Num in ArrayNum2
+        where Num % 2 == 0
+        orderby Num
+        select Num;
+
+var OddNumberMethod = ArrayNum2.Where(x => x % 2 != 0).OrderBy(x => x).ToList();
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo os Valores do vetor ArrayNum2");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+Operacao.ImprimirArray(ArrayNum2);
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.ReadLine();
+Console.Clear();
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo somente os Valores Pares do vetor ArrayNum2 pelo método da Sintaxe de Query do LINQ\n");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+OperacaoLINQ.PrintLINQuery(EvenNumberQuery);
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.ReadLine();
+Console.Clear();
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo somente os Valores Ímpares do vetor ArrayNum2 pelo método da Sintaxe de Método do LINQ (Ordem Ascendente)\n");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+
+OperacaoLista.PrintList(OddNumberMethod);
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.ReadLine();
+Console.Clear();
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo somente os Valores Ímpares do vetor ArrayNum2 pelo método da Sintaxe de Método do LINQ (Ordem Descendente)\n");
+
+OddNumberMethod = ArrayNum2.Where(x => x % 2 != 0).OrderByDescending(x => x).ToList();
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+OperacaoLista.PrintList(OddNumberMethod);
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.ReadLine();
+Console.Clear();
+
+var MinValue = ArrayNum2.Min();
+var MaxValue = ArrayNum2.Max();
+var Average = ArrayNum2.Average();
+var Sum = ArrayNum2.Sum();
+var UniqueArrayNum2 = ArrayNum2.Distinct().ToArray();
 
 
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine($"Minimum Value : [{MinValue}]");
+Console.WriteLine($"Maximum Value : [{MaxValue}]");
+Console.WriteLine($"Average Value : [{Average}]");
+Console.WriteLine($"Sum : [{Sum}]");
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo Array Original");
+Operacao.ImprimirArray(ArrayNum2);
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.WriteLine("Imprimindo Array Distinto");
+Operacao.ImprimirArray(UniqueArrayNum2);
+
+
+Console.WriteLine("----------------------------------------------------------------------------- \n");
+Console.ReadLine();
+Console.Clear();
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Collection_LINQ_Fundamentals_DIO.Helper
 {
     internal class OperacoesLista
@@ -14,6 +13,11 @@ namespace Collection_LINQ_Fundamentals_DIO.Helper
             {
                 Console.WriteLine($" Index -> [{i}] Value -> [{Lista[i]}]");
             }
+        }
+        internal void PrintList<T>(IEnumerable<T> Lista)
+        {
+            var row = "[" + string.Join("]-[", Lista) + "]";
+            Console.WriteLine(row);
         }
     }
 }
